@@ -1,0 +1,47 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    # ports:
+    #   - "8086:8086"
+    volumes:
+      - ./influx-db-data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=walmorecommon
+    user: "1001"
+
+  telegraf:
+    image: telegraf:1.16
+    container_name: telegraf
+    environment:
+      - TTN_USERNAME=${TTN_USERNAME}
+      - TTN_ACCESS_KEY=${TTN_ACCESS_KEY}
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+  grafana:
+    image: grafana/grafana:7.3.4
+    container_name: grafana
+    labels:
+      - traefik.docker.network=traefik-proxy_frontend
+      - "traefik.http.routers.grafana.rule=PathPrefix(`/`)"
+      - traefik.http.routers.grafana.entrypoints=websecure
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
+    # ports:
+    #   - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - ./grafana-storage:/var/lib/grafana
+    user: "1001"
+    networks:
+      - default
+      - traefik-proxy_frontend
+
+networks:
+  traefik-proxy_frontend:
+    external: true
