@@ -8,7 +8,7 @@ https://environment.data.gov.uk/flood-monitoring/doc/reference
 [Historic river level data](https://riverlevels.uk/river-severn-minsterworth#.X9Cbctj7Q2w)
 
 ## Setup
-TODO First, run init.sh to create data folders for the containers to mount.
+First, run init.sh to create data folders for the containers to mount.
 
 ## Influxdb
 ```

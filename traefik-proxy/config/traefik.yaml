@@ -21,5 +21,12 @@ entryPoints:
   websecure:
     address: ":443"
 
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      httpChallenge:
+        entryPoint: web
+      storage: /letsencrypt/acme.json
+
 log:
   level: INFO

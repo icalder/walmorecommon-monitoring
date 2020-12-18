@@ -34,6 +34,8 @@ services:
       - "traefik.http.routers.grafana.rule=PathPrefix(`/`)"
       - traefik.http.routers.grafana.entrypoints=websecure
       - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.tls.certresolver=letsencrypt
+      - traefik.http.routers.grafana.tls.domains[0].main=monitoring.walmorecommon.org
       - traefik.http.services.grafana.loadbalancer.server.port=3000
     # ports:
     #   - "3000:3000"

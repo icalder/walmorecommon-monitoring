@@ -1,4 +1,7 @@
-# Traefik setup
+# Traefik
+
+## Setup
+First, run init.sh to create data folders for the containers to mount.
 
 If you want to create the frontend network independently of the dockerfile:
 
