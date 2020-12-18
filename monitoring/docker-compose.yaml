@@ -21,6 +21,9 @@ services:
       - TTN_ACCESS_KEY=${TTN_ACCESS_KEY}
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    network_mode: service:influxdb
+    depends_on:
+      - influxdb
 
   grafana:
     image: grafana/grafana:7.3.4
