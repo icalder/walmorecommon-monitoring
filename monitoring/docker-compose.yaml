@@ -33,9 +33,7 @@ services:
       - traefik.docker.network=traefik-proxy_frontend
       - "traefik.http.routers.grafana-insecure.rule=PathPrefix(`/`)"
       - traefik.http.routers.grafana-insecure.entrypoints=web
-      - traefik.http.middlewares.grafana-redirect.redirectscheme.scheme=https
-      - traefik.http.middlewares.grafana-redirect.redirectscheme.permanent=true
-      - traefik.http.routers.grafana-insecure.middlewares=grafana-redirect@docker
+      - traefik.http.routers.grafana-insecure.middlewares=redirect-permanent-https
       - "traefik.http.routers.grafana.rule=PathPrefix(`/`)"
       - traefik.http.routers.grafana.entrypoints=websecure
       - traefik.http.routers.grafana.tls=true
