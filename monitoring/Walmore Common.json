@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "panels": [
     {
@@ -131,7 +131,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:393",
           "format": "lengthm",
           "label": "mASD",
           "logBase": 1,
@@ -140,7 +139,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:394",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -265,7 +263,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:483",
           "format": "lengthmm",
           "label": "15min rainfall",
           "logBase": 1,
@@ -274,7 +271,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:484",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -331,11 +327,8 @@
       "points": true,
       "renderer": "flot",
       "seriesOverrides": [
+        {},
         {
-          "$$hashKey": "object:253"
-        },
-        {
-          "$$hashKey": "object:387",
           "alias": "humidity",
           "yaxis": 2
         }
@@ -453,7 +446,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:592",
           "format": "celsius",
           "label": "temperature",
           "logBase": 1,
@@ -462,7 +454,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:593",
           "decimals": null,
           "format": "percent",
           "label": "humidity",
@@ -485,12 +476,12 @@
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Walmore Common",
   "uid": "RRWx0wzRz",
-  "version": 7
+  "version": 1
 }
