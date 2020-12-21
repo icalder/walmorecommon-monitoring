@@ -191,7 +191,7 @@
       },
       "percentage": false,
       "pluginVersion": "7.3.4",
-      "pointradius": 2,
+      "pointradius": 1,
       "points": true,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -476,12 +476,12 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Walmore Common",
   "uid": "RRWx0wzRz",
-  "version": 2
+  "version": 3
 }
