@@ -30,7 +30,7 @@
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
@@ -49,16 +49,16 @@
         "total": false,
         "values": true
       },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "connected",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.3.4",
       "pointradius": 2,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -296,7 +296,7 @@
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
@@ -315,16 +315,16 @@
         "total": false,
         "values": true
       },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "connected",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.3.4",
       "pointradius": 2,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {},
@@ -476,12 +476,12 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Walmore Common",
   "uid": "RRWx0wzRz",
-  "version": 1
+  "version": 2
 }
