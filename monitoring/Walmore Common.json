@@ -175,12 +175,12 @@
       "hiddenSeries": false,
       "id": 4,
       "legend": {
-        "avg": true,
+        "avg": false,
         "current": false,
         "max": false,
         "min": false,
         "show": true,
-        "total": false,
+        "total": true,
         "values": true
       },
       "lines": false,
@@ -603,12 +603,12 @@
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Walmore Common",
   "uid": "RRWx0wzRz",
-  "version": 7
+  "version": 8
 }
