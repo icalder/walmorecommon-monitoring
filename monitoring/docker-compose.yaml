@@ -1,4 +1,4 @@
-version: '3'
+version: "3.9"
 services:
   influxdb:
     image: influxdb:1.8
@@ -10,15 +10,15 @@ services:
       - ./influx-db-data:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=walmorecommon
-    user: "1001"
+    user: "${UID}"
 
   telegraf:
-    image: telegraf:1.16
+    image: telegraf:1.25
     container_name: telegraf
     restart: unless-stopped
-    environment:
-      - TTN_USERNAME=${TTN_USERNAME}
-      - TTN_ACCESS_KEY=${TTN_ACCESS_KEY}
+    # environment:
+    #   - TTN_USERNAME=${TTN_USERNAME}
+    #   - TTN_ACCESS_KEY=${TTN_ACCESS_KEY}
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     network_mode: service:influxdb
@@ -26,7 +26,7 @@ services:
       - influxdb
 
   grafana:
-    image: grafana/grafana:7.3.4
+    image: grafana/grafana:9.3.6
     container_name: grafana
     restart: unless-stopped
     labels:
@@ -48,10 +48,10 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     volumes:
       - ./grafana-storage:/var/lib/grafana
-    user: "1001"
     networks:
       - default
       - traefik-proxy_frontend
+    user: "${UID}"
 
 networks:
   traefik-proxy_frontend:

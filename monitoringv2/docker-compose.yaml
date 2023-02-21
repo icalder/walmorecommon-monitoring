@@ -1,0 +1,49 @@
+version: "3.9"
+services:
+  influxdb2:
+    image: influxdb:2.6-alpine
+    container_name: influxdb2
+    restart: unless-stopped
+    labels:
+      - traefik.docker.network=traefik-proxy_frontend
+      - "traefik.http.routers.influx2-insecure.rule=PathPrefix(`/`)"
+      - traefik.http.routers.influx2-insecure.entrypoints=web
+      - traefik.http.routers.influx2-insecure.middlewares=redirect-permanent-https
+      - "traefik.http.routers.influx2.rule=PathPrefix(`/`)"
+      - traefik.http.routers.influx2.entrypoints=websecure
+      - traefik.http.routers.influx2.tls=true
+      - traefik.http.routers.influx2.tls.certresolver=letsencrypt
+      - traefik.http.routers.influx2.tls.domains[0].main=v2.walmorecommon.org
+      - traefik.http.services.influx2.loadbalancer.server.port=8086
+    # ports:
+    #   - "8086:8086"
+    volumes:
+      - ./config.yml:/etc/influxdb2/config.yml
+      - ./influx-db-data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=walmorecommon
+      - DOCKER_INFLUXDB_INIT_BUCKET=monitoring
+      - INFLUXDB_DB=walmorecommon
+    networks:
+      - default
+      - traefik-proxy_frontend
+    user: "${UID}"
+
+  telegraf:
+    image: telegraf:1.25
+    container_name: telegraf
+    restart: unless-stopped
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:
+      - TELEGRAF_INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}
+    network_mode: service:influxdb2
+    depends_on:
+      - influxdb2
+
+networks:
+  traefik-proxy_frontend:
+    external: true

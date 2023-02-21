@@ -31,10 +31,10 @@ https://console.thethingsnetwork.org/
 
 ```
 # to generate a default telegraf config file:
-docker-compose run --rm telegraf telegraf config > telegraf-example.conf
+docker compose run --rm telegraf telegraf config > telegraf-example.conf
 
 # to test telegraf
-docker-compose run --rm telegraf --test
+docker compose run --rm telegraf --test
 ```
 
 ## Grafana
